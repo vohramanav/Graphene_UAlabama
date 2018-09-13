@@ -1,0 +1,344 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  This Beamer template was created by Cameron Bracken.
+%%  Anyone can freely use or modify it for any purpose
+%%  without attribution.
+%%
+%%  Last Modified: January 9, 2009
+%%
+
+\documentclass[handout,xcolor={x11names,table},compress,svgnames,mathserif]{beamer}
+
+%% General document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{mindmap}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.fractals}
+%\usepackage{lmodern}
+\usepackage{animate}
+\usepackage{movie15}
+\usepackage{bm}
+\usepackage{pifont}
+\usepackage{empheq}
+\usepackage[many]{tcolorbox}
+\usepackage{smartdiagram}
+\usepackage[customcolors]{hf-tikz}
+\usepackage{dashrule} % for dotted vertical line
+\definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
+\definecolor{pigment}{rgb}{0.2, 0.2, 0.6}
+\DeclareMathOperator*{\argmin}{arg\,min}
+%\usepackage{flexisym}
+
+\usepackage[absolute,overlay]{textpos}
+
+\pgfdeclarehorizontalshading{section shading}{2cm}{
+color(0cm)=(LightSlateGrey);
+color(2cm)=(gray!7);
+color(3cm)=(LightSlateGrey!15)
+}
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\addtobeamertemplate{block begin}{\pgfsetfillopacity{0.8}}{\pgfsetfillopacity{1}}
+\setbeamercolor{structure}{fg=mygreen}
+\setbeamercolor*{block title example}{fg=blue!50,
+bg= blue!10}
+\setbeamercolor*{block body example}{fg= blue,
+bg= blue!5}
+
+% boxed equaton
+\usepackage[many]{tcolorbox}
+%\tcbuselibrary{skins}
+
+\tcbset{highlight math style={enhanced,
+  colframe=red!60!black,colback=yellow!50!white,arc=4pt,boxrule=1pt,
+  }}
+
+\newtcbox{\mybox}[1][]{nobeforeafter,math upper,tcbox raise base,
+  enhanced,frame hidden,boxrule=0pt,interior style={top color=green!10!white,
+  bottom color=green!10!white,middle color=green!50!yellow},
+  fuzzy halo=1pt with green,drop large lifted shadow,#1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{positioning,decorations.pathreplacing}
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=purple!20, 
+    text width=5.0em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw=none, fill=blue!20, anchor=north, 
+    text width=9.0em, text centered]
+    \tikzstyle{blockr} = [rectangle, draw, fill=blue!20, 
+    text width=9.0em, text centered, rounded corners]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw=none, ellipse,fill=purple!20, node distance=3cm,
+    minimum height=2em]
+    
+
+%% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\useoutertheme[subsection=false,shadow]{miniframes}
+\useinnertheme{default}
+%\usefonttheme{serif}
+\usepackage{palatino}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\newcommand{\angstrom}{\textup{\AA}}
+
+\setbeamerfont{title like}{shape=\scshape}
+\setbeamerfont{frametitle}{shape=\scshape}
+\setbeamertemplate{itemize items}[triangle] % if you wnat a circle
+\setbeamertemplate{itemize subitem}[triangle]
+\setbeamertemplate{navigation symbols}{}
+%\setbeamertemplate{footline}[frame number]
+
+\setbeamercolor{footlinecolor}{fg=white,bg=DeepSkyBlue4}
+\defbeamertemplate*{footline}{infolines theme}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{footlinecolor}
+ % {author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+   % \usebeamerfont{author in head/foot}\insertshortauthor~~(\insertshortinstitute)
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{footlinecolor}
+  %{date in head/foot}%
+   % \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+    \usebeamerfont{date in head/foot}{manav.vohra@vanderbilt.edu}\hspace*{2em}
+    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+%\setbeamercolor{section in head/foot}{fg=white, bg=DeepSkyBlue4}
+
+\setbeamercolor*{lower separation line head}{bg=DeepSkyBlue4} 
+\setbeamercolor*{normal text}{fg=black,bg=white} 
+\setbeamercolor*{alerted text}{fg=red} 
+\setbeamercolor*{example text}{fg=black} 
+\setbeamercolor*{structure}{fg=black} 
+ 
+\setbeamercolor*{palette tertiary}{fg=black,bg=black!10} 
+\setbeamercolor*{palette quaternary}{fg=black,bg=black!10} 
+
+\renewcommand{\(}{\begin{columns}}
+\renewcommand*\footnoterule{}
+\renewcommand{\)}{\end{columns}}
+\newcommand{\<}[1]{\begin{column}{#1}}
+\renewcommand{\>}{\end{column}}
+
+\newcommand*\subitem{%
+  \item[\color{DeepSkyBlue4}\scalebox{0.6}{\ding{228}}]}
+  
+  \newcommand*\subitemtwo{%
+  \item[\color{LightSlateGrey!15}\scalebox{0.6}{\ding{228}}]}
+
+\newcommand*\myitem{%
+  \item[\color{DeepSkyBlue4}\scalebox{0.6}{\ding{110}}]}
+ 
+  \newcommand*\myitemtwo{%
+  \item[\color{LightSlateGrey!15}\scalebox{0.6}{\ding{110}}]}
+  
+\newcommand*\Myitem{%
+  \item[\color{DeepSkyBlue4}\scalebox{0.9}{\ding{42}}]}
+  
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\p}{\partial}
+\def\ol{\overline}
+\def\no{\noindent}
+\def\Vb{{\cal V}}
+\def\Qd{\dot{Q}}
+%\DeclareMathSymbol{\ast}{\mathbin}{symbols}{"03}
+ \newcommand{\argmax}{\operatornamewithlimits{arg\,max}}
+
+%-----------Parameter screening tikz styles -----------------------
+   \tikzstyle{A} = [rectangle, rounded corners, minimum width=1.5cm, minimum height=0.5cm,text centered, draw=black,
+     fill=blue!30]
+      \tikzstyle{B} = [rectangle, rounded corners, minimum width=1.5cm, minimum height=0.5cm,text centered, draw=black,
+     fill=red!30]
+      \tikzstyle{p} = [rectangle, rounded corners, minimum width=1.5cm, minimum height=0.5cm,text centered, draw=black,
+     fill=yellow!30]
+      \tikzstyle{q} = [rectangle, rounded corners, minimum width=1.5cm, minimum height=0.5cm,text centered, draw=black,
+     fill=green!30]
+      \tikzstyle{alpha} = [rectangle, rounded corners, minimum width=1.5cm, minimum height=0.5cm,text centered, draw=black,
+     fill=magenta!30]
+      \tikzstyle{lambda} = [rectangle, rounded corners, minimum width=1.5cm, minimum height=0.5cm,text centered, draw=black,
+     fill=cyan!30]
+      \tikzstyle{gamma} = [rectangle, rounded corners, minimum width=1.5cm, minimum height=0.5cm,text centered, draw=black,
+     fill=orange!30]
+ \tikzstyle{outer} = [rectangle, minimum width=1.5cm, minimum height=0.5cm,text centered, draw=black,dashed]    
+ \tikzstyle{pool} = [rectangle, minimum width=2.0cm, minimum height=1.6cm,line width=1pt,
+text centered, draw=black,dashed]    
+
+%% Algorithm %%%%%
+\usepackage[linesnumbered]{algorithm2e}
+\newcommand{\nosemic}{\renewcommand{\@endalgocfline}{\relax}}% Drop semi-colon ;
+\newcommand{\dosemic}{\renewcommand{\@endalgocfline}{\algocf@endline}}% Reinstate semi-colon ;
+\newcommand{\pushline}{\Indp}% Indent
+\newcommand{\popline}{\Indm\dosemic}% Undent
+\let\oldnl\nl% Store \nl in \oldnl
+\newcommand{\nonl}{\renewcommand{\nl}{\let\nl\oldnl}}% Remove line number for one
+\SetKwRepeat{Do}{do}{while}
+%%%%%%%%%%%%%%%%%
+ 
+%---------------------QUOTATION--------------------------
+\usepackage{etoolbox}
+%\usepackage[svgnames]{xcolor}
+\usepackage{framed}
+
+% conditional for xetex or luatex
+\newif\ifxetexorluatex
+\ifxetex
+  \xetexorluatextrue
+\else
+  \ifluatex
+    \xetexorluatextrue
+  \else
+    \xetexorluatexfalse
+  \fi
+\fi
+%
+\ifxetexorluatex%
+  \usepackage{fontspec}
+  \usepackage{libertine} % or use \setmainfont to choose any font on your system
+  \newfontfamily\quotefont[Ligatures=TeX]{Linux Libertine O} % selects Libertine as the quote font
+\else
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  %\usepackage{libertine} % or any other font package
+  \newcommand*\quotefont{\fontfamily{LinuxLibertineT-LF}} % selects Libertine as the quote font
+\fi
+
+\newcommand*\quotesize{30} % if quote size changes, need a way to make shifts relative
+% Make commands for the quotes
+\newcommand*{\openquote}
+   {\tikz[remember picture,overlay,xshift=-3ex,yshift=-0.5ex]
+   \node (OQ) {\quotefont\fontsize{\quotesize}{\quotesize}\selectfont``};\kern0pt}
+
+\newcommand*{\closequote}[1]
+  {\tikz[remember picture,overlay,xshift=-15ex,yshift={#1}]
+   \node (CQ) {\quotefont\fontsize{\quotesize}{\quotesize}\selectfont''};}
+
+% select a colour for the shading
+\colorlet{shadecolor}{Azure}
+
+\newcommand*\shadedauthorformat{\emph} % define format for the author argument
+
+% Now a command to allow left, right and centre alignment of the author
+\newcommand*\authoralign[1]{%
+  \if#1l
+    \def\authorfill{}\def\quotefill{\hfill}
+  \else
+    \if#1r
+      \def\authorfill{\hfill}\def\quotefill{}
+    \else
+      \if#1c
+        \gdef\authorfill{\hfill}\def\quotefill{\hfill}
+      \else\typeout{Invalid option}
+      \fi
+    \fi
+  \fi}
+% wrap everything in its own environment which takes one argument (author) and one optional argument
+% specifying the alignment [l, r or c]
+%
+\newenvironment{shadequote}[2][l]%
+{\authoralign{#1}
+\ifblank{#2}
+   {\def\shadequoteauthor{}\def\yshift{-2ex}\def\quotefill{\hfill}}
+   {\def\shadequoteauthor{\par\authorfill\shadedauthorformat{#2}}\def\yshift{2ex}}
+\begin{snugshade}\begin{quote}\openquote}
+{\shadequoteauthor\quotefill\closequote{\yshift}\end{quote}\end{snugshade}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title[Graphene: Mechanical Properties]{\textbf{Surrogate-based
+Assessment of Mechanical Properties of Graphene}}
+\thispagestyle{empty}
+\pgfsetfillopacity{0.9}
+\setbeamercolor{title}{bg=DeepSkyBlue4,fg=white}
+
+
+%\subtitle{SUBTITLE}
+\author[M. Vohra and S. Mahadevan]{Manav Vohra$^{\dag}$, Sankaran Mahadevan$^{\dag}$ \\ \vspace{2mm}
+\small{\textbf{Collaborators}: Samit Roy$^{\S}$, Anubhav Roy$^{\S}$}}
+\vspace{-1mm}
+\institute{$^{\dag}$Vanderbilt University\\ \vspace{1mm}
+$^{\S}$University of Alabama}
+
+\date{\today}
+
+
+\begin{document}
+
+
+%___________________________NEW SLIDE______________________________________
+{
+\setbeamertemplate{headline}{}
+
+\begin{frame}[noframenumbering]
+
+\titlepage
+\vspace{-21mm}
+\centering
+%\scriptsize Institute for Computational Engineering and Sciences\\ \vspace{1mm}
+%The University of Texas at Austin \\ \vspace{6mm}
+
+%\footnotesize Seminar at SCI, University of Utah \\ \vspace{2mm}
+
+
+\end{frame}
+}
+
+%___________________________NEW SLIDE______________________________________
+
+%\Section{surrogate}
+\begin{frame}{Polynomial Chaos Surrogate}
+
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{center}
+\scriptsize
+\vspace{-5mm}
+\begin{tcolorbox}[width=0.9\textwidth,height=0.32\textwidth,colback=DeepSkyBlue!20,notitle,colframe=DeepSkyBlue!20,colupper=DeepSkyBlue4]
+\scriptsize
+\vspace{-2mm}
+\be
+\hspace{-2mm}
+t_r(\bm{\xi}) = \sum_{k=0}^{P} c_{k} \Psi_{k}(\bm{\xi}) \nonumber
+\ee
+\vspace{-2mm}
+\tiny
+\be \bm \xi: \{\xi_1(D_0),\xi_2(E_a),\xi_3(dT/dt),\xi_4(t_p)\} \nonumber \ee
+\end{tcolorbox}
+\end{center}
+
+\end{column}
+\hspace{-10mm}
+\begin{column}{0.5\textwidth}
+\begin{center}
+\vspace{-3.4mm}
+\begin{tcolorbox}[width=0.9\textwidth,height=0.38\textwidth,colback=DeepSkyBlue!20,notitle,colframe=DeepSkyBlue!20,colupper=DeepSkyBlue4]
+\vspace{-5.5mm}
+\scriptsize
+\be
+\begin{aligned}
+c_{k} &= \frac{1}{\langle\Psi_{k}^{2}\rangle}\langle\Psi_{k},Q(\bm \xi)\rangle \\
+&= \frac{1}{\langle\Psi_{k}^{2}\rangle}\int Q(\bm{\xi})\Psi(\bm{\xi})p(\bm{\xi})d\bm{\xi} \nonumber
+\end{aligned}
+\ee
+\vspace{-1mm}
+\end{tcolorbox}
+\end{center}
+
+\end{column}
+\end{columns}
+
+\end{frame}
+
+\end{document}

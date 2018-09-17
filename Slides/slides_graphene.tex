@@ -303,29 +303,28 @@ $^{\S}$University of Alabama}
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \begin{center}
-\scriptsize
-\vspace{-5mm}
-\begin{tcolorbox}[width=0.9\textwidth,height=0.32\textwidth,colback=DeepSkyBlue!20,notitle,colframe=DeepSkyBlue!20,colupper=DeepSkyBlue4]
-\scriptsize
+\small
+\vspace{-2.5mm}
+\begin{tcolorbox}[width=1.0\textwidth,height=0.35\textwidth,colback=DeepSkyBlue!20,notitle,colframe=DeepSkyBlue!20,colupper=DeepSkyBlue4]
 \vspace{-2mm}
 \be
 \hspace{-2mm}
-t_r(\bm{\xi}) = \sum_{k=0}^{P} c_{k} \Psi_{k}(\bm{\xi}) \nonumber
+E(\bm{\xi}) = \sum_{k=0}^{P} c_{k} \Psi_{k}(\bm{\xi}) \nonumber
 \ee
 \vspace{-2mm}
-\tiny
-\be \bm \xi: \{\xi_1(D_0),\xi_2(E_a),\xi_3(dT/dt),\xi_4(t_p)\} \nonumber \ee
+\scriptsize
+\be \bm \xi: f(\bm{\theta})\in \mathcal{U}[-1, 1] \nonumber \ee
 \end{tcolorbox}
 \end{center}
 
 \end{column}
-\hspace{-10mm}
+\hspace{-5mm}
 \begin{column}{0.5\textwidth}
 \begin{center}
 \vspace{-3.4mm}
-\begin{tcolorbox}[width=0.9\textwidth,height=0.38\textwidth,colback=DeepSkyBlue!20,notitle,colframe=DeepSkyBlue!20,colupper=DeepSkyBlue4]
+\begin{tcolorbox}[width=1.0\textwidth,height=0.41\textwidth,colback=DeepSkyBlue!20,notitle,colframe=DeepSkyBlue!20,colupper=DeepSkyBlue4]
 \vspace{-5.5mm}
-\scriptsize
+\small
 \be
 \begin{aligned}
 c_{k} &= \frac{1}{\langle\Psi_{k}^{2}\rangle}\langle\Psi_{k},Q(\bm \xi)\rangle \\
@@ -335,10 +334,21 @@ c_{k} &= \frac{1}{\langle\Psi_{k}^{2}\rangle}\langle\Psi_{k},Q(\bm \xi)\rangle \
 \vspace{-1mm}
 \end{tcolorbox}
 \end{center}
-
 \end{column}
 \end{columns}
 
+\vspace{3mm}
+\textbf{Prior Distributions}:
+
+\begin{itemize}
+\myitem Strain rate: $\dot{\varepsilon}\sim \mathcal{U}[10^9,~10^{12}](\text{s}^{-1}$)
+\myitem $\bm{\theta}:~\{\dot{\varepsilon},x_i,y_i\}$
+\myitem $x_i\sim \mathcal{U}[0, 30]$(nm), $y_i\sim \mathcal{U}[0, 20]$(nm)
+\myitem Single Defect: $i$ = 1
+\myitem Two Defects: $i$ = 1,2
+\end{itemize}
+
 \end{frame}
+
 
 \end{document}
